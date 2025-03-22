@@ -24,13 +24,14 @@ function addProject() {
     projects.push(project);
     localStorage.setItem("projects", JSON.stringify(projects));
 
-    loadProjects();
+    window.location.href = "projects.html";
 }
 
 function loadProjects() {
     const projectsGrid = document.getElementById("projectsGrid");
+    if (!projectsGrid) return;
+    
     projectsGrid.innerHTML = "";
-
     let projects = JSON.parse(localStorage.getItem("projects")) || [];
 
     projects.forEach((project, index) => {
@@ -38,16 +39,16 @@ function loadProjects() {
         card.classList.add("project-card");
         card.innerHTML = `
             <h3>${index + 1}. ${project.title}</h3>
-            <p><strong>Technology:</strong> ${project.technology}</p>
-            <p><strong>Start:</strong> ${project.start}</p>
-            <p><strong>End:</strong> ${project.end}</p>
         `;
-        card.addEventListener("click", () => showProjectDetails(project));
+        card.addEventListener("click", () => showProjectDetails(index));
         projectsGrid.appendChild(card);
     });
 }
 
-function showProjectDetails(project) {
+function showProjectDetails(index) {
+    let projects = JSON.parse(localStorage.getItem("projects")) || [];
+    const project = projects[index];
+
     document.getElementById("modalTitle").innerText = project.title;
     document.getElementById("modalDescription").innerText = project.description;
     document.getElementById("modalTechnology").innerText = project.technology;
