@@ -3,23 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project Submission</title>
+    <title>Project Manager</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
-        <h2>Enter Your Project Details</h2>
-        <input type="text" id="title" placeholder="Project Title">
-        <textarea id="description" placeholder="Project Description"></textarea>
-        <input type="text" id="technology" placeholder="Technology Used">
-        <button onclick="submitProject()">Submit</button>
-    </div>
-
-    <div class="project-display" id="projectOutput">
-        <h2>Project Details</h2>
-        <p><strong>Title:</strong> <span id="outputTitle"></span></p>
-        <p><strong>Description:</strong> <span id="outputDescription"></span></p>
-        <p><strong>Technology Used:</strong> <span id="outputTechnology"></span></p>
+        <h1>Project Manager</h1>
+        <div class="form-container">
+            <input type="text" id="title" placeholder="Project Title" required>
+            <textarea id="description" placeholder="Project Description" required></textarea>
+            <input type="text" id="technology" placeholder="Technology Used" required>
+            <label>Start Date:</label>
+            <input type="date" id="startDate" required>
+            <input type="time" id="startTime" required>
+            <label>End Date:</label>
+            <input type="date" id="endDate" required>
+            <input type="time" id="endTime" required>
+            <button onclick="addProject()">Add Project</button>
+        </div>
+        <a href="projects.html" class="view-projects">View Projects</a>
     </div>
 
     <script src="script.js"></script>

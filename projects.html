@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project List</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Your Projects</h1>
+        <div class="projects-grid" id="projectsGrid"></div>
+        <a href="index.html" class="back-button">🏠 Back to Home</a>
+    </div>
+
+    <div id="projectDetailModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h2 id="modalTitle"></h2>
+            <p id="modalDescription"></p>
+            <p><strong>Technology:</strong> <span id="modalTechnology"></span></p>
+            <p><strong>Start:</strong> <span id="modalStart"></span></p>
+            <p><strong>End:</strong> <span id="modalEnd"></span></p>
+            <button id="editProject">✏️ Edit</button>
+            <button id="deleteProject">🗑️ Delete</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
