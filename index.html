@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Submission</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 500px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #28a745;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .project-display {
+            margin-top: 20px;
+            padding: 15px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Enter Your Project Details</h2>
+        <input type="text" id="title" placeholder="Project Title">
+        <textarea id="description" placeholder="Project Description"></textarea>
+        <input type="text" id="technology" placeholder="Technology Used">
+        <button onclick="submitProject()">Submit</button>
+    </div>
+
+    <div class="project-display" id="projectOutput" style="display: none;">
+        <h2>Project Details</h2>
+        <p><strong>Title:</strong> <span id="outputTitle"></span></p>
+        <p><strong>Description:</strong> <span id="outputDescription"></span></p>
+        <p><strong>Technology Used:</strong> <span id="outputTechnology"></span></p>
+    </div>
+
+    <script>
+        function submitProject() {
+            var title = document.getElementById("title").value;
+            var description = document.getElementById("description").value;
+            var technology = document.getElementById("technology").value;
+            
+            if (title && description && technology) {
+                document.getElementById("outputTitle").innerText = title;
+                document.getElementById("outputDescription").innerText = description;
+                document.getElementById("outputTechnology").innerText = technology;
+                document.getElementById("projectOutput").style.display = "block";
+            } else {
+                alert("Please fill all fields!");
+            }
+        }
+    </script>
+</body>
+</html>
