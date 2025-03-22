@@ -19,6 +19,7 @@ function addProject() {
         title, 
         description, 
         technology,
+        title, description, technology,
         start: `${startDate} (${startTime})`,
         end: `${endDate} (${endTime})`
     };
@@ -33,19 +34,25 @@ function addProject() {
 function loadProjects() {
     const projectsGrid = document.getElementById("projectsGrid");
     if (!projectsGrid) return;
-
     projectsGrid.innerHTML = "";
     let projects = JSON.parse(localStorage.getItem("projects")) || [];
 
     projects.forEach((project, index) => {
         const card = document.createElement("div");
         card.classList.add("project-card");
+
         card.dataset.index = index;
         card.innerHTML = `
             <h3>${index + 1}. ${project.title}</h3>
             <p><strong>Technology:</strong> ${project.technology}</p>
             <button onclick="showProjectDetails(${index})">View Details</button>
         `;
+
+        card.innerHTML = `
+            <h3>${index + 1}. ${project.title}</h3>
+        `;
+        card.addEventListener("click", () => showProjectDetails(index));
+
         projectsGrid.appendChild(card);
     });
 }
@@ -60,8 +67,10 @@ function showProjectDetails(index) {
     document.getElementById("modalStart").innerText = project.start;
     document.getElementById("modalEnd").innerText = project.end;
 
+
     document.getElementById("editProject").onclick = () => editProject(index);
     document.getElementById("deleteProject").onclick = () => deleteProject(index);
+
 
     document.getElementById("projectDetailModal").style.display = "block";
 }
@@ -69,6 +78,7 @@ function showProjectDetails(index) {
 function closeModal() {
     document.getElementById("projectDetailModal").style.display = "none";
 }
+
 
 function deleteProject(index) {
     let projects = JSON.parse(localStorage.getItem("projects")) || [];
@@ -95,3 +105,4 @@ function editProject(index) {
         loadProjects();
     }
 }
+
